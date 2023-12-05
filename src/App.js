@@ -1,7 +1,8 @@
 import "./App.css";
-import { CssBaseline } from "@mui/material";
+import { Box, CssBaseline, AppBar } from "@mui/material";
 import { Route, Switch } from "react-router-dom";
-import useStyles from "./components/styles";
+import useStyles from "./styles";
+import useAlan from "./components/Alan";
 import {
   Actors,
   MovieInformation,
@@ -9,18 +10,23 @@ import {
   NavBar,
   Movies,
 } from "./components";
+import { useRef } from "react";
 
 function App() {
   const classes = useStyles();
+  useAlan();
+  const alanBtnContainer = useRef();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{ display: "flex !important" }}>
+      {/* <AppBar position="fixed" className={classes.appBar} /> */}
+
       <CssBaseline />
       <NavBar />
-      <main className={classes.Container}>
+      <div component="main" className={classes.container}>
         <div className={classes.toolbar} />
         <Switch>
           <Route exact path="/">
-            <Movies />
+            <Movies component="main" />
           </Route>
           <Route exact path="/profile/:id">
             <Profile />
@@ -32,7 +38,8 @@ function App() {
             <Actors />
           </Route>
         </Switch>
-      </main>
+      </div>
+      <div ref={alanBtnContainer} />
     </div>
   );
 }
