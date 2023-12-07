@@ -29,7 +29,6 @@ const FeaturedMovie = ({ movie }) => {
         >
           <Typography variant="h5" gutterBottom>
             {movie.title}
-            {console.log(movie.title)}
           </Typography>
           <Typography variant="body2">{movie.overview}</Typography>
         </CardContent>
